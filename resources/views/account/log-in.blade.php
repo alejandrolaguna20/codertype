@@ -27,6 +27,9 @@
                         class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all"
                         placeholder="Enter your email"
                     >
+                    @error("email")
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div>

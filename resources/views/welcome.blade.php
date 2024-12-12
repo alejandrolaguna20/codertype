@@ -7,11 +7,7 @@
     <div class="max-w-4xl mx-auto text-center">
         <div class="relative inline-block mb-6">
             <h1 class="font-sans text-5xl md:text-6xl font-bold mb-6 relative z-10">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
-                    Master Developer
-                </span>
-                <br/>
-                Typing Speed
+                become a faster coder!
             </h1>
             <div class="absolute -top-4 -left-4 -right-4 -bottom-4 bg-white/5 blur-2xl z-0"></div>
         </div>
@@ -22,7 +18,7 @@
             </p>
 
             <div class="flex justify-center space-x-4">
-                <a href="" class="bg-violet-900 text-white px-8 py-4 rounded-lg hover:bg-violet-950 transition-all font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group">
+                <a href="/register" class="bg-violet-900 text-white px-8 py-4 rounded-lg hover:bg-violet-950 transition-all font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group">
                     <span class="font-sans relative z-10">Start typing</span>
                     <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 </a>
@@ -30,7 +26,6 @@
         </div>
 
         <div class="mt-16 relative">
-            <div class="absolute left-1/2 transform -translate-x-1/2 top-0 w-60 h-60 bg-accent-primary/20 rounded-full blur-3xl"></div>
             <div class="relative z-10 bg-white/5 rounded-xl border border-white/10 p-6 max-w-2xl mx-auto">
                 <div class="text-left font-mono text-sm bg-black/50 rounded-lg p-4 font-bold">
                     <span class="text-teal-400">~/codertype</span> <span class="text-gray-400">»</span> typing-practice start

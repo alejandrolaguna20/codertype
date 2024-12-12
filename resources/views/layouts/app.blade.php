@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'codertype | Code Typing Mastery')</title>
 
+    <! TODO: make it local / install livewire to autoimport it -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 
+
+    <! TODO: move this to .css file -->
     <style>
         :root {
             --bg-primary: #0f172a;
@@ -50,6 +54,9 @@
 
     @stack('styles')
 </head>
+
+
+<! TODO: properly format this -->
 <body class="min-h-screen relative">
     <div class="code-background"></div>
 
@@ -58,13 +65,31 @@
             <a href="" class="flex items-center text-white hover:text-opacity-70 transition-all">
                 <span class="font-bold font-sans text-lg">codertype</span>
             </a>
-            <nav class="flex gap-6">
+            <nav class="flex gap-6 items-center">
                 @auth
-                    <!-- Authenticated user navigation -->
-                    <a href="" class="text-white hover:text-opacity-70">Dashboard</a>
-                    <a href="" class="text-white hover:text-opacity-70">Logout</a>
+                <div x-data="{ open: false }" class="relative">
+                    <button @click="open = !open" class="px-6 py-2 bg-white/5 rounded-xl border border-white/10 flex items-center text-white hover:text-opacity-70 focus:outline-none font-sans font-bold">
+                            {{auth()->user()->name}}
+                    </button>
+                    <div
+                        x-show="open"
+                        x-cloak
+                        @click.away="open = false"
+                        class="absolute right-0 mt-2 w-56 bg-black/50 rounded-xl border border-white/10 shadow-lg p-4 backdrop-blur-md z-20 transition-all"
+                    >
+                        <a href="#" class="block text-sm font-mono text-teal-400 hover:text-white hover:bg-teal-400/20 rounded-lg px-4 py-2 transition-all">
+                            Profile
+                        </a>
+                        <a href="#" class="block text-sm font-mono text-blue-400 hover:text-white hover:bg-blue-400/20 rounded-lg px-4 py-2 transition-all">
+                            Settings
+                        </a>
+                        <a href="#" class="block text-sm font-mono text-pink-400 hover:text-white hover:bg-pink-400/20 rounded-lg px-4 py-2 transition-all">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+
                 @else
-                    <!-- Guest navigation -->
                     <a href="" class="text-white hover:text-opacity-70">Login</a>
                     <a href="" class="text-white hover:text-opacity-70">Register</a>
                 @endauth

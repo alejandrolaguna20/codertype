@@ -12,21 +12,36 @@ class AccountController extends Controller
 {
     public function register_view()
     {
+        if (Auth::user()) {
+            return redirect("/");
+        }
+
         return view('account.register');
     }
 
     public function login_view()
     {
+        if (Auth::user()) {
+            return redirect("/");
+        }
         return view('account.log-in');
     }
 
     public function log_in_user(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255'
+            'email' => 'required|email|max:255',
+            'password' => 'required',
         ]);
-        dd($validated);
+
+        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+            $request->session()->regenerate();
+            return redirect()->route('dashboard')->with('success', 'Logged in successfully!');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function register_user(Request $request)
