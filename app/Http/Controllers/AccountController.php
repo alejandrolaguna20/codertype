@@ -36,7 +36,7 @@ class AccountController extends Controller
 
         if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard')->with('success', 'Logged in successfully!');
+            return redirect("/")->with('success', 'Logged in successfully!');
         }
 
         return back()->withErrors([
