@@ -73,4 +73,14 @@ class AccountController extends Controller
 
         return redirect()->route('home')->with('success', 'Account created successfully!');
     }
+
+    public function logout_user(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

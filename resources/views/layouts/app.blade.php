@@ -83,15 +83,12 @@
                         <a href="#" class="block text-sm font-mono text-blue-400 hover:text-white hover:bg-blue-400/20 rounded-lg px-4 py-2 transition-all">
                             Settings
                         </a>
-                        <a href="#" class="block text-sm font-mono text-pink-400 hover:text-white hover:bg-pink-400/20 rounded-lg px-4 py-2 transition-all">
+                        <a href="/logout" class="block text-sm font-mono text-pink-400 hover:text-white hover:bg-pink-400/20 rounded-lg px-4 py-2 transition-all">
                             Logout
                         </a>
                     </div>
                 </div>
 
-                @else
-                    <a href="" class="text-white hover:text-opacity-70">Login</a>
-                    <a href="" class="text-white hover:text-opacity-70">Register</a>
                 @endauth
             </nav>
         </div>

@@ -26,3 +26,34 @@
         opacity: 0;
     }
 }
+
+
+/* Add these custom styles */
+.whitespace-pre-wrap {
+    white-space: pre-wrap;
+}
+
+/* Simulate IDE-like text density */
+.font-mono {
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+}
+
+/* Character styling */
+span[class*="inline-block"] {
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+/* Current character highlight */
+.bg-violet-900\/30 {
+    background-color: rgba(109, 40, 217, 0.3);
+    padding: 0 1px;
+    border-radius: 2px;
+}
+
+/* Error styling */
+.text-red-400 {
+    color: #f87171;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}

@@ -8,3 +8,4 @@ Route::post('/login', [AccountController::class, 'log_in_user'])->name('account.
 
 Route::get('/register', [AccountController::class, 'register_view'])->name('account.register');
 Route::post('/register', [AccountController::class, 'register_user'])->name('account.register_user');
+Route::get('/logout', [AccountController::class, 'logout_user'])->name('account.logout_user');

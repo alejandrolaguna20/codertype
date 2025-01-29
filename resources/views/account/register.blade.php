@@ -95,7 +95,7 @@
         <div class="mt-6 text-center">
             <p class="text-gray-300">
                 Already have an account?
-                <a href="" class="text-accent-primary hover:text-accent-secondary font-semibold">
+                <a href="/login" class="text-accent-primary hover:text-accent-secondary font-semibold">
                     Log in
                 </a>
             </p>
