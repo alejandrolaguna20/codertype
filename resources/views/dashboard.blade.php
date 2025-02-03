@@ -35,25 +35,22 @@
     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 transition-opacity"
          :class="{'animate-scan': isRunning}"></div>
 
-    <!-- Character Grid -->
-    <div class="relative z-10 grid grid-cols-[repeat(auto-fill,minmax(1.2rem,1fr))] gap-0 font-mono font-bold text-lg">
+    <!-- Character Container -->
+    <div class="relative z-10 font-mono font-bold break-all">
       <template x-for="(char, index) in renderedLetters" :key="index">
         <span
           :class="getCharClasses(index)"
-          class="transition-all duration-300 rounded-sm inline text-center" <!-- Changed inline-block to inline -->
+          class="transition-all duration-300 rounded-sm align-top m-0"
           :data-index="index"
-        >
-          <template x-if="char === ' '">
-            <span class="text-gray-500">·</span>
-          </template>
-          <template x-if="char === '\n'">
-            <span class="text-gray-500">↩</span>
-          </template>
-          <span x-text="char" x-show="char !== ' ' && char !== '\n'"></span>
-        </span>
+        ><template x-if="char === ' '">
+            <span class="text-gray-500 text-2xl px-[2px]">·</span>
+        </template><template x-if="char === '\n'">
+            <span class="text-gray-300 text-2xl px-2 after:content-[''] after:block after:mb-1">↩</span>
+        </template><span x-text="char"
+                x-show="char !== ' ' && char !== '\n'"
+                class="inline-block text-2xl"></span></span>
       </template>
     </div>
-
     <!-- Hidden Input -->
     <input type="text"
            x-ref="input"
