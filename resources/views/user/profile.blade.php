@@ -3,123 +3,130 @@
 @section('title', 'Codertype | Profile Statistics')
 
 @section('content')
-<section class="min-h-screen px-4 pt-20">
-    <div class="max-w-6xl mx-auto">
-        <!-- Profile Header -->
-        <div class="relative mb-12">
-            <div class="flex items-center gap-6 bg-white/5 rounded-xl border border-white/10 p-6 backdrop-blur-lg">
+<section class="min-h-screen px-4 pt-20 pb-12">
+    <div class="max-w-6xl mx-auto space-y-12">
+        <!-- Profile Header with Performance Summary -->
+        <div class="relative group">
+            <div class="flex flex-col md:flex-row gap-8 items-start md:items-center bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 p-8 backdrop-blur-lg">
                 <div class="relative">
-                    <div class="w-20 h-20 rounded-full bg-violet-900/30 flex items-center justify-center">
+                    <div class="w-24 h-24 rounded-2xl bg-violet-900/30 flex items-center justify-center shadow-lg">
                         <span class="text-3xl font-bold text-violet-400">JD</span>
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-gray-900"></div>
                     </div>
-                    <div class="absolute -inset-2 bg-white/5 blur-xl z-0"></div>
                 </div>
-                <div>
-                    <h2 class="text-2xl font-bold mb-1">John Developer</h2>
-                    <p class="text-gray-400 font-mono text-sm">Joined: March 2023</p>
+
+                <div class="space-y-2 flex-1">
+                    <h1 class="text-3xl font-bold">John Developer</h1>
+                    <div class="flex flex-wrap gap-4 text-sm text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <span>Joined March 2023</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>32h practiced</span>
+                        </div>
+                    </div>
+
+                    <!-- Performance Meter -->
+                    <div class="mt-4 flex gap-4 items-center">
+                        <div class="flex-1 bg-white/10 rounded-full h-3">
+                            <div class="h-full bg-gradient-to-r from-violet-400 to-teal-400 rounded-full w-3/4"></div>
+                        </div>
+                        <span class="text-sm font-mono text-teal-400">Top 15%</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <div class="bg-white/5 rounded-lg border border-white/10 p-6">
-                <p class="text-gray-400 text-sm mb-2">Average WPM</p>
-                <p class="text-3xl font-bold text-teal-400">72</p>
+        <!-- Key Metrics Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 transition-all hover:border-violet-400/30">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm text-gray-400 mb-2">Average Speed</p>
+                        <p class="text-3xl font-bold text-teal-400">82<span class="text-lg">wpm</span></p>
+                    </div>
+                    <div class="text-teal-400 bg-teal-900/30 p-3 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-400">
+                    <span class="text-teal-400">▲ 8%</span> from last month
+                </div>
             </div>
-            <div class="bg-white/5 rounded-lg border border-white/10 p-6">
-                <p class="text-gray-400 text-sm mb-2">Accuracy</p>
-                <p class="text-3xl font-bold text-pink-400">94%</p>
-            </div>
-            <div class="bg-white/5 rounded-lg border border-white/10 p-6">
-                <p class="text-gray-400 text-sm mb-2">Highest Score</p>
-                <p class="text-3xl font-bold text-blue-400">112</p>
-            </div>
+
+            <!-- Repeat similar cards for Accuracy and Consistency -->
         </div>
 
-        <!-- Progress Charts -->
-        <div x-data="{ activeTab: 'week' }" class="mb-8">
-            <div class="bg-white/5 rounded-xl border border-white/10 p-6">
-                <div class="flex gap-4 mb-6">
-                    <button @click="activeTab = 'day'"
-                            :class="activeTab === 'day' ? 'bg-violet-900/50 border-violet-400' : 'border-transparent'"
+        <!-- Progress Visualization -->
+        <div x-data="{ activeMetric: 'wpm' }" class="bg-white/5 rounded-2xl border border-white/10 p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Performance Trends</h3>
+                <div class="flex gap-2">
+                    <button @click="activeMetric = 'wpm'"
+                            :class="activeMetric === 'wpm' ? 'bg-violet-900/50 border-violet-400' : 'border-white/10'"
                             class="px-4 py-2 rounded-lg border transition-all">
-                        Daily
+                        WPM
                     </button>
-                    <button @click="activeTab = 'week'"
-                            :class="activeTab === 'week' ? 'bg-violet-900/50 border-violet-400' : 'border-transparent'"
+                    <button @click="activeMetric = 'accuracy'"
+                            :class="activeMetric === 'accuracy' ? 'bg-violet-900/50 border-violet-400' : 'border-white/10'"
                             class="px-4 py-2 rounded-lg border transition-all">
-                        Weekly
-                    </button>
-                    <button @click="activeTab = 'month'"
-                            :class="activeTab === 'month' ? 'bg-violet-900/50 border-violet-400' : 'border-transparent'"
-                            class="px-4 py-2 rounded-lg border transition-all">
-                        Monthly
+                        Accuracy
                     </button>
                 </div>
-                <div class="h-64" x-show="activeTab === 'week'">
-                    <!-- Chart container (integrate your charting library here) -->
-                    <div class="bg-black/20 rounded-lg p-4 h-full flex items-center justify-center text-gray-400">
-                        WPM Progress Chart (Weekly)
-                    </div>
+            </div>
+            <div class="h-80">
+                <div class="bg-black/20 rounded-xl p-4 h-full flex items-center justify-center text-gray-400">
+                    <!-- Chart.js or similar integration -->
+                    <canvas id="performanceChart"></canvas>
                 </div>
             </div>
         </div>
 
-        <!-- Recent Tests -->
-        <div class="bg-white/5 rounded-xl border border-white/10 p-6">
-            <h3 class="text-xl font-bold mb-6">Recent Tests</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-black/20">
-                        <tr>
-                            <th class="px-4 py-3 text-left text-sm text-gray-400 font-mono">Date</th>
-                            <th class="px-4 py-3 text-left text-sm text-gray-400 font-mono">WPM</th>
-                            <th class="px-4 py-3 text-left text-sm text-gray-400 font-mono">Accuracy</th>
-                            <th class="px-4 py-3 text-left text-sm text-gray-400 font-mono">Language</th>
-                            <th class="px-4 py-3 text-left text-sm text-gray-400 font-mono">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-t border-white/10">
-                            <td class="px-4 py-3 text-sm">2023-07-20</td>
-                            <td class="px-4 py-3 text-teal-400 font-bold">84</td>
-                            <td class="px-4 py-3 text-pink-400">96%</td>
-                            <td class="px-4 py-3">JavaScript</td>
-                            <td class="px-4 py-3">
-                                <span class="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-                                <span class="ml-2">Completed</span>
-                            </td>
-                        </tr>
-                        <!-- Add more rows -->
-                    </tbody>
-                </table>
+        <!-- Session History -->
+        <div class="space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold">Recent Sessions</h3>
+                <a href="#" class="text-sm text-gray-400 hover:text-violet-400">View all →</a>
+            </div>
+
+            <div class="space-y-2">
+                <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:border-violet-400/30 transition-all">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-violet-900/30 rounded-lg flex items-center justify-center">
+                            <span class="text-violet-400">JS</span>
+                        </div>
+                        <div>
+                            <p class="font-bold">132 WPM</p>
+                            <p class="text-sm text-gray-400">JavaScript • 60s</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-pink-400">96%</p>
+                        <p class="text-sm text-gray-400">2023-07-20</p>
+                    </div>
+                </div>
+
+                <!-- More session items -->
             </div>
         </div>
 
-        <!-- Additional Stats -->
-        <div class="grid md:grid-cols-2 gap-4 mt-8">
-            <div class="bg-white/5 rounded-xl border border-white/10 p-6">
-                <h4 class="text-lg font-bold mb-4">Practice Time</h4>
-                <div class="space-y-2">
-                    <div class="flex justify-between">
-                        <span class="text-gray-400">Today</span>
-                        <span class="text-blue-400">28 mins</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-400">This Week</span>
-                        <span class="text-blue-400">3h 42m</span>
-                    </div>
+        <!-- Skill Distribution -->
+        <div class="bg-white/5 rounded-2xl border border-white/10 p-6">
+            <h3 class="text-xl font-bold mb-6">Language Proficiency</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-4 bg-violet-900/30 rounded-xl text-center">
+                    <div class="text-3xl mb-2 text-violet-400">72%</div>
+                    <div class="text-sm">JavaScript</div>
                 </div>
-            </div>
-            <div class="bg-white/5 rounded-xl border border-white/10 p-6">
-                <h4 class="text-lg font-bold mb-4">Achievements</h4>
-                <div class="flex gap-4">
-                    <div class="w-12 h-12 rounded-full bg-violet-900/30 flex items-center justify-center">
-                        🏆
-                    </div>
-                    <!-- Add more achievements -->
-                </div>
+                <!-- Add more languages -->
             </div>
         </div>
     </div>

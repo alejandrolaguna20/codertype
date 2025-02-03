@@ -9,7 +9,9 @@
             <h1 class="font-sans text-4xl md:text-5xl font-bold mb-6 relative z-10">
                 We missed you!
             </h1>
-            <div class="absolute -top-4 -left-4 -right-4 -bottom-4 bg-white/5 blur-2xl z-0"></div>
+            <div class="absolute -top-4 -left-4 -right-4 -bottom-4 bg-white/5 blur-2xl z-0">
+
+            </div>
         </div>
 
         <div class="bg-white/5 rounded-xl border border-white/10 p-8 shadow-lg">
