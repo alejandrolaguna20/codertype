@@ -8,4 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        strictPort: true,
+        https: true, // Force HTTPS in dev mode
+    },
 });
