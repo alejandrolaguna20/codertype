@@ -71,7 +71,7 @@ class AccountController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Account created successfully!');
+        return redirect()->route('user.profile')->with('success', 'Account created successfully!');
     }
 
     public function logout_user(Request $request)
