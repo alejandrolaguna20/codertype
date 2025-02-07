@@ -77,8 +77,11 @@
                         @click.away="open = false"
                         class="absolute right-0 mt-2 w-56 bg-black/50 rounded-xl border border-white/10 shadow-lg p-4 backdrop-blur-md z-20 transition-all"
                     >
-                        <a href="#" class="block text-sm font-mono text-teal-400 hover:text-white hover:bg-teal-400/20 rounded-lg px-4 py-2 transition-all">
+                        <a href="/profile" class="block text-sm font-mono text-teal-400 hover:text-white hover:bg-teal-400/20 rounded-lg px-4 py-2 transition-all">
                             Profile
+                        </a>
+                        <a href="/leaderboard" class="block text-sm font-mono text-amber-400 hover:text-white hover:bg-teal-400/20 rounded-lg px-4 py-2 transition-all">
+                            Leaderboard
                         </a>
                         <a href="#" class="block text-sm font-mono text-blue-400 hover:text-white hover:bg-blue-400/20 rounded-lg px-4 py-2 transition-all">
                             Settings
