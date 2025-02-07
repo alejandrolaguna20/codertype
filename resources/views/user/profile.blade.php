@@ -10,13 +10,13 @@
             <div class="flex flex-col md:flex-row gap-8 items-start md:items-center bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 p-8 backdrop-blur-lg">
                 <div class="relative">
                     <div class="w-24 h-24 rounded-2xl bg-violet-900/30 flex items-center justify-center shadow-lg">
-                        <span class="text-3xl font-bold text-violet-400">JD</span>
+                        <span class="text-3xl font-bold text-violet-400">{{auth()->user()->name[0]}}</span>
                         <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-gray-900"></div>
                     </div>
                 </div>
 
                 <div class="space-y-2 flex-1">
-                    <h1 class="text-3xl font-bold">John Developer</h1>
+                    <h1 class="text-3xl font-bold">{{auth()->user()->name}}</h1>
                     <div class="flex flex-wrap gap-4 text-sm text-gray-400">
                         <div class="flex items-center gap-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

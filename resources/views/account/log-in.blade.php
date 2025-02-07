@@ -73,7 +73,7 @@
         <div class="mt-6 text-center">
             <p class="text-gray-300">
                 Don't have an account?
-                <a href="" class="text-accent-primary hover:text-accent-secondary font-semibold">
+                <a href="/register" class="text-accent-primary hover:text-accent-secondary font-semibold">
                     Register
                 </a>
             </p>

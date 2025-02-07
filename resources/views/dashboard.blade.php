@@ -30,35 +30,35 @@
             </div>
 
             <!-- Code Display -->
-<div class="bg-white/5 rounded-xl border border-white/10 p-6 min-h-min relative overflow-hidden"
-     x-on:click="focusInput">
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 transition-opacity"
-         :class="{'animate-scan': isRunning}"></div>
+                <div class="bg-white/5 rounded-xl border border-white/10 p-6 min-h-min relative overflow-hidden"
+                     x-on:click="focusInput">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 transition-opacity"
+                         :class="{'animate-scan': isRunning}"></div>
 
-    <!-- Character Container -->
-    <div class="relative z-10 font-mono font-bold break-all">
-      <template x-for="(char, index) in renderedLetters" :key="index">
-        <span
-          :class="getCharClasses(index)"
-          class="transition-all duration-300 rounded-sm align-top m-0"
-          :data-index="index"
-        ><template x-if="char === ' '">
-            <span class="text-gray-500 text-2xl px-[2px]">·</span>
-        </template><template x-if="char === '\n'">
-            <span class="text-gray-300 text-2xl px-2 after:content-[''] after:block after:mb-1">↩</span>
-        </template><span x-text="char"
-                x-show="char !== ' ' && char !== '\n'"
-                class="inline-block text-2xl"></span></span>
-      </template>
-    </div>
-    <!-- Hidden Input -->
-    <input type="text"
-           x-ref="input"
-           class="absolute opacity-0 -top-96"
-           x-model="userInput"
-           @focus="startTest"
-           @blur="pauseTest">
-</div>
+                    <!-- Character Container -->
+                    <div class="relative z-10 font-mono font-bold break-all">
+                      <template x-for="(char, index) in renderedLetters" :key="index">
+                        <span
+                          :class="getCharClasses(index)"
+                          class="transition-all duration-300 rounded-sm align-top m-0"
+                          :data-index="index"
+                        ><template x-if="char === ' '">
+                            <span class="text-gray-500 text-2xl px-[2px]">·</span>
+                        </template><template x-if="char === '\n'">
+                            <span class="text-gray-300 text-2xl px-2 after:content-[''] after:block after:mb-1">↩</span>
+                        </template><span x-text="char"
+                                x-show="char !== ' ' && char !== '\n'"
+                                class="inline-block text-2xl"></span></span>
+                      </template>
+                    </div>
+                    <!-- Hidden Input -->
+                    <input type="text"
+                           x-ref="input"
+                           class="absolute opacity-0 -top-96"
+                           x-model="userInput"
+                           @focus="startTest"
+                           @blur="pauseTest">
+                </div>
 
             <!-- Controls -->
             <div class="mt-6 flex flex-wrap justify-center gap-4">
