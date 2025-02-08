@@ -5,6 +5,30 @@
 @section('content')
 <section class="min-h-screen px-4 pt-20 pb-12">
     <div class="max-w-6xl mx-auto space-y-12">
+
+@if ($user == NULL)
+    <div class="text-center mt-[10vh]">
+        <h2 class="text-3xl font-bold">No user selected</h2>
+        <p class="text-lg text-gray-400">Please select a user to view their profile statistics</p>
+        <div class="flex justify-center gap-4 mt-8 flex-wrap">
+            @foreach ($preselectedUsers as $preselectedUser)
+                <div class="bg-white/5 p-6 rounded-xl border border-white/10 transition-all hover:border-violet-400/30 w-64">
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 rounded-2xl bg-violet-900/30 flex items-center justify-center shadow-lg mb-4">
+                            <span class="text-3xl font-bold text-violet-400">{{ $preselectedUser->name[0] }}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <!-- TODO: Implement badges                            <x-heroicon-o-shield-check class="w-5 h-5 text-teal-400 bg-teal-400/25 p-1 rounded-lg" /> -->
+                            <h3 class="text-xl font-bold">{{ $preselectedUser->name }}</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Joined {{ $preselectedUser->created_at->format('M Y') }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@else
+
         <!-- Profile Header with Performance Summary -->
         <div class="relative group">
             <div class="flex flex-col md:flex-row gap-8 items-start md:items-center bg-gradient-to-br from-white/5 to-transparent rounded-2xl border border-white/10 p-8 backdrop-blur-lg">
@@ -129,6 +153,8 @@
                 <!-- Add more languages -->
             </div>
         </div>
+
+@endif
     </div>
 </section>
 @endsection
